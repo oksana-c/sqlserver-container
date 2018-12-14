@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: "sqlserver"
+    stop_grace_period: 30s
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Password!
+#    volumes:
+#      - mssql-data:/var/lib/mssql # Use bind mount
+    ports:
+      - '1433:1433'
+
+volumes:
+## For mssql data
+  mssql-data:
+    driver: local
